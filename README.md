@@ -23,9 +23,13 @@ go run main.go -project=/path/to/your/project -godot-version=4.2 -godot-repo-url
 
 If you do not provide a Godot repository URL, the script will use "https://github.com/godotengine/godot-cpp" by default.
 
+### Notes
+
+The project should work for Windows, Linux and Macos but currently it has only been tested on Windows!
+
 
 Authors \
 **Nikos Raftogiannis** 
 
 License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the Apache-2.0 License - see the LICENSE file for details
