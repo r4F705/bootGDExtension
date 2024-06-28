@@ -20,16 +20,14 @@ Here is an example of how to use the script:
 go run main.go -project=/path/to/your/project -godot-version=4.2 -godot-repo-url=https://github.com/godotengine/godot-cpp
 ```
 
+* If you do not provide a Godot repository URL, the script will use "https://github.com/godotengine/godot-cpp" by default.* 
+
 After the bootstraping is completed change directory to your godot project and run the command below to install the extentions to the project. This step needs to be repeated each time you make changes to the extention code. Also do not forget to reload your godot project for the changes to take effect.
 ```
-py -m SCons
+python -m SCons
 ```
 
 To verify that the installation was successful try to create a new *GDExample* node from the editor!
-
-
-If you do not provide a Godot repository URL, the script will use "https://github.com/godotengine/godot-cpp" by default.
-
 
 ### Notes
 
