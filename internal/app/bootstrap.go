@@ -59,10 +59,10 @@ func (b *BootstrapOptions) BootstrapCpp(projectPath string) {
 	// build the bindings if engine is same version as the godot-cpp engine
 	// Example: --dump-extension-api
 
-	// If the src directory already exists skip creating it
-	// Create a new directory for the c++ extension named src
-	if _, err := os.Stat("src"); os.IsNotExist(err) {
-		err = os.Mkdir("src", 0755)
+	// If the ext directory already exists skip creating it
+	// Create a new directory for the c++ extension named ext
+	if _, err := os.Stat("ext"); os.IsNotExist(err) {
+		err = os.Mkdir("ext", 0755)
 		if err != nil {
 			log.Fatalf("Error: %s", err)
 		}
@@ -77,13 +77,13 @@ func (b *BootstrapOptions) BootstrapCpp(projectPath string) {
 		}
 	}
 
-	// Add the register_types.h and register_types.cpp files to the src directory
+	// Add the register_types.h and register_types.cpp files to the ext directory
 	err = addRegisterTypesFiles()
 	if err != nil {
 		log.Fatalf("Error: %s", err)
 	}
 
-	// Add the example class files to the src/example directory
+	// Add the example class files to the ext/example directory
 	err = addExampleClassFiles()
 	if err != nil {
 		log.Fatalf("Error: %s", err)
@@ -196,8 +196,8 @@ func addRegisterTypesFiles() error {
 		return err
 	}
 
-	// Write the contents of the assets/register_types.h file to the src/register_types.h file
-	err = os.WriteFile("src/register_types.h", registerTypesH, 0644)
+	// Write the contents of the assets/register_types.h file to the ext/register_types.h file
+	err = os.WriteFile("ext/register_types.h", registerTypesH, 0644)
 	if err != nil {
 		return err
 	}
@@ -208,8 +208,8 @@ func addRegisterTypesFiles() error {
 		return err
 	}
 
-	// Write the contents of the assets/register_types.cpp file to the src/register_types.cpp file
-	err = os.WriteFile("src/register_types.cpp", registerTypesCpp, 0644)
+	// Write the contents of the assets/register_types.cpp file to the ext/register_types.cpp file
+	err = os.WriteFile("ext/register_types.cpp", registerTypesCpp, 0644)
 	if err != nil {
 		return err
 	}
@@ -219,8 +219,8 @@ func addRegisterTypesFiles() error {
 
 func addExampleClassFiles() error {
 	// Make a new directory for the example class if it does not exist
-	if _, err := os.Stat("src/example"); os.IsNotExist(err) {
-		err = os.Mkdir("src/example", 0755)
+	if _, err := os.Stat("ext/example"); os.IsNotExist(err) {
+		err = os.Mkdir("ext/example", 0755)
 		if err != nil {
 			return err
 		}
@@ -232,8 +232,8 @@ func addExampleClassFiles() error {
 		return err
 	}
 
-	// Write the contents of the assets/gdexample.h file to the src/example/gdexample.h file
-	err = os.WriteFile("src/example/gdexample.h", gdExampleH, 0644)
+	// Write the contents of the assets/gdexample.h file to the ext/example/gdexample.h file
+	err = os.WriteFile("ext/example/gdexample.h", gdExampleH, 0644)
 	if err != nil {
 		return err
 	}
@@ -244,8 +244,8 @@ func addExampleClassFiles() error {
 		return err
 	}
 
-	// Write the contents of the assets/gdexample.cpp file to the src/example/gdexample.cpp file
-	err = os.WriteFile("src/example/gdexample.cpp", gdExampleCpp, 0644)
+	// Write the contents of the assets/gdexample.cpp file to the ext/example/gdexample.cpp file
+	err = os.WriteFile("ext/example/gdexample.cpp", gdExampleCpp, 0644)
 	if err != nil {
 		return err
 	}
